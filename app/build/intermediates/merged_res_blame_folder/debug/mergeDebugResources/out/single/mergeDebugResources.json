@@ -24,12 +24,12 @@
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card1505.png"
     },
     {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card2410.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card2410.png"
-    },
-    {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_back.png.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/back.png"
+    },
+    {
+        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card2410.png.flat",
+        "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card2410.png"
     },
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card2402.png.flat",
@@ -42,10 +42,6 @@
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card2409.png.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card2409.png"
-    },
-    {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-ldpi_ic_launcher_foreground.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-ldpi/ic_launcher_foreground.png"
     },
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable_ic_launcher_background.xml.flat",
@@ -74,10 +70,6 @@
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/layout_today_attendant_inquire.xml.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/layout/today_attendant_inquire.xml"
-    },
-    {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-xxxhdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card1506.png.flat",
@@ -156,10 +148,6 @@
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card908.png"
     },
     {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-anydpi-v24/ic_launcher_foreground.xml"
-    },
-    {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/layout_rollcall.xml.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/layout/rollcall.xml"
     },
@@ -180,16 +168,8 @@
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card2414.png"
     },
     {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-hdpi_ic_launcher_foreground.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-hdpi/ic_launcher_foreground.png"
-    },
-    {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/layout_adapter_scan_device_item.xml.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/layout/adapter_scan_device_item.xml"
-    },
-    {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-xxhdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card905_2.png.flat",
@@ -268,10 +248,6 @@
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card1509.png"
     },
     {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-xhdpi/ic_launcher_foreground.png"
-    },
-    {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_level15.png.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/level15.png"
     },
@@ -336,6 +312,10 @@
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxhdpi/map_01_lobby.png"
     },
     {
+        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable/ic_launcher_foreground.xml"
+    },
+    {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card2415.png.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card2415.png"
     },
@@ -390,10 +370,6 @@
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card906_1.png.flat",
         "source": "com.THLight.USBeacon.Sample.app-main-14:/drawable-xxxhdpi/card906_1.png"
-    },
-    {
-        "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-mdpi_ic_launcher_foreground.png.flat",
-        "source": "com.THLight.USBeacon.Sample.app-pngs-8:/drawable-mdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "com.THLight.USBeacon.Sample.app-debug-12:/drawable-xxxhdpi_card1501.png.flat",
