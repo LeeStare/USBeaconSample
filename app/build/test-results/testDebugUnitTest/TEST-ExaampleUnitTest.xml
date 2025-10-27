@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ExaampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-09T13:26:55" hostname="LAPTOP-CQUQ8544" time="0.001">
+  <properties/>
+  <testcase name="testCase" classname="ExaampleUnitTest" time="0.001"/>
+  <system-out><![CDATA[testBeforeClass
+testBefore
+--------
+testCase
+--------
+testAfter
+testAfterClass
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

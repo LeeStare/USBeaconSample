@@ -1,36 +1,32 @@
 apply plugin: 'com.android.application'
-
+//apply plugin: 'com.google.gms.google-services'
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.mr_alex.pyatnashki"
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 13
-        versionName "3.1"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId "com.THLight.USBeacon.Sample"
+        minSdkVersion 21
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
+    implementation('com.google.android.material:material:1.0.0')
+    implementation files('libs/libusbeaconapp.jar')
+    implementation files('libs/thlutil.jar')
+    implementation files('libs/mysql-connector-java-5.1.48.jar')
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    //implementation 'com.google.firebase:firebaanalyticsse-'
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    testImplementation 'junit:junit:4.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // Required -- JUnit 4 framework
+    testImplementation 'junit:junit:4.12'
+    // Optional -- Mockito framework（可选，用于模拟一些依赖对象，以达到隔离依赖的效果）
+    testImplementation 'org.mockito:mockito-core:2.19.0'
 }

@@ -1,25 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/White"
-    android:gravity="center">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:background="#F3F3F3"
+	android:gravity="center"
+	android:orientation="vertical"
+	tools:context=".ui.MainActivity"
+	android:weightSum="1920">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="@dimen/logoSizeW"
-        android:layout_height="@dimen/logoSizeH"
-        android:background="@drawable/logo"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:contentDescription="@string/logo"/>
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="120"
+		android:background="#FF000000"
+		android:gravity="center"
+		android:text="以下為附近掃瞄到的 iBeacon"
+		android:textColor="@android:color/background_light" />
 
-    <TextView
-        android:id="@+id/show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="Loading..." />
+	<com.THLight.USBeacon.Sample.ui.recyclerview.CustomRecyclerView
+		android:id="@+id/beacon_recyclerView"
+		android:layout_width="match_parent"
+		android:layout_height="371dp"
+		android:layout_weight="1800"
+		android:background="#FF000000"
+		android:divider="#55FFFFFF"
+		android:dividerHeight="2dp"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:scrollbars="vertical" />
 
-</FrameLayout>
+	<TextView
+		android:id="@+id/guideline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" />
+
+	<!--
+	<Button
+		android:id="@+id/button_DefaultNotification"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="點名功能" />
+
+	<Button
+		android:id="@+id/button_CustomNotification"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="遊戲功能" />
+	!-->
+
+	<Button
+		android:id="@+id/btn_to_Login"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingLeft="15dp"
+		android:paddingTop="20dp"
+		android:paddingRight="15dp"
+		android:paddingBottom="20dp"
+		android:text="前往登入頁面"
+		android:textSize="18sp" />
+
+</LinearLayout>
+
