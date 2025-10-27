@@ -210,35 +210,24 @@ public class GameActivity9 extends Activity{
                         if (v.getId() == BUTTON_ID[i][j])
                             buttonFunction(i, j);
 
-            switch (v.getId()) {
-                case R.id.bNewGame:
-                    sound.playSound(setButtonSound);
-                    newGame();
-                    break;
-                case R.id.bBackMenu:
-                    sound.playSound(setButtonSound);
-                    backMenu();
-                    break;
-                case R.id.bAboutGame:
-                    sound.playSound(setButtonSound);
-                    aboutOnClick();
-                    break;
-                case R.id.bSoundOffOn:
-                    soundOffOn();
-                    sound.playSound(setButtonSound);
-                    break;
-                case R.id.button_CustomButtonDialog:
-                    if(passwordI.size() > 0)
-                    {
-                        example();
-                    }
-                    else
-                    {
-                        findOK();
-                    }
-                    break;
-                default:
-                    break;
+            if (v.getId() == R.id.bNewGame) {
+                sound.playSound(setButtonSound);
+                newGame();
+            } else if (v.getId() == R.id.bBackMenu) {
+                sound.playSound(setButtonSound);
+                backMenu();
+            } else if (v.getId() == R.id.bAboutGame) {
+                sound.playSound(setButtonSound);
+                aboutOnClick();
+            } else if (v.getId() == R.id.bSoundOffOn) {
+                soundOffOn();
+                sound.playSound(setButtonSound);
+            } else if (v.getId() == R.id.button_CustomButtonDialog) {
+                if (passwordI.size() > 0) {
+                    example();
+                } else {
+                    findOK();
+                }
             }
         }
     };

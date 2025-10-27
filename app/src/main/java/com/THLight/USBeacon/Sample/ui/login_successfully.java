@@ -47,21 +47,14 @@ public class login_successfully extends Activity {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.btn_to_game:
-                    bToGame();
-                    break;
-                case R.id.btn_to_roll_call:
-                    bRollCall();
-                    break;
-                case R.id.btn_to_search_today:
-                    bToSerachD();
-                    break;
-                case R.id.btn_to_search_user:
-                    bToSerachU();
-                    break;
-                default:
-                    break;
+            if (v.getId() == R.id.btn_to_game) {
+                bToGame();
+            } else if (v.getId() == R.id.btn_to_roll_call) {
+                bRollCall();
+            } else if (v.getId() == R.id.btn_to_search_today) {
+                bToSerachD();
+            } else if (v.getId() == R.id.btn_to_search_user) {
+                bToSerachU();
             }
         }
     };

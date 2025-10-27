@@ -1,0 +1,144 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.THLight.USBeacon.Sample"
+4    android:versionCode="5"
+5    android:versionName="5.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="21" />
+10
+11    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+11-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:6:5-74
+11-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:6:22-71
+12    <uses-permission android:name="android.permission.BLUETOOTH" />
+12-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:7:5-68
+12-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:7:22-65
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:8:5-79
+13-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:8:22-76
+14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+14-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:9:5-76
+14-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:9:22-73
+15    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+15-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:10:5-76
+15-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:10:22-73
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:11:5-67
+16-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:11:22-64
+17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+17-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:12:5-81
+17-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:12:22-78
+18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+18-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:13:5-80
+18-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:13:22-77
+19    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+19-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:14:5-81
+19-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:14:22-78
+20    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+20-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:15:5-95
+20-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:15:22-92
+21    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+21-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:16:5-77
+21-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:16:22-74
+22    <uses-permission android:name="android.permission.WAKE_LOCK" />
+22-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:17:5-67
+22-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:17:22-65
+23    <uses-permission android:name="android.permission.INTERNET" />
+23-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:11:5-67
+23-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:11:22-64
+24
+25    <uses-feature
+25-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:20:5-22:35
+26        android:name="android.hardware.bluetooth_le"
+26-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:21:9-53
+27        android:required="true" />
+27-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:22:9-32
+28
+29    <application
+29-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:24:5-61:19
+30        android:name="com.THLight.USBeacon.Sample.thLightApplication"
+30-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:25:9-70
+31        android:allowBackup="true"
+31-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:26:9-35
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.0.0] D:\Gradle\caches\8.13\transforms\4a3303dc2d3247a6336f4fcdb3f42d23\transformed\core-1.0.0\AndroidManifest.xml:22:18-86
+33        android:debuggable="true"
+34        android:extractNativeLibs="true"
+35        android:icon="@drawable/ic_launcher"
+35-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:27:9-45
+36        android:label="@string/app_name"
+36-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:28:9-41
+37        android:persistent="true"
+37-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:29:9-34
+38        android:theme="@style/AppTheme" >
+38-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:30:9-40
+39        <activity
+39-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:31:9-41:20
+40            android:name="com.THLight.USBeacon.Sample.ui.MainActivity"
+40-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:32:13-71
+41            android:label="@string/app_name"
+41-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:33:13-45
+42            android:launchMode="singleTop"
+42-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:34:13-43
+43            android:screenOrientation="portrait" >
+43-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:35:13-49
+44            <intent-filter>
+44-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:36:13-40:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:37:17-69
+45-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:37:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:39:17-77
+47-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:39:27-74
+48            </intent-filter>
+49        </activity>
+50        <!-- 新增 -->
+51        <activity android:name="com.THLight.USBeacon.Sample.ui.GameActivity9" />
+51-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:43:9-81
+51-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:43:19-78
+52        <activity android:name="com.THLight.USBeacon.Sample.ui.login" />
+52-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:45:9-73
+52-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:45:19-70
+53        <activity android:name="com.THLight.USBeacon.Sample.ui.sign_up" />
+53-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:46:9-75
+53-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:46:19-72
+54        <activity android:name="com.THLight.USBeacon.Sample.ui.login_successfully" />
+54-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:47:9-86
+54-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:47:19-83
+55        <activity android:name="com.THLight.USBeacon.Sample.ui.login_teacher" />
+55-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:48:9-81
+55-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:48:19-78
+56        <activity android:name="com.THLight.USBeacon.Sample.ui.todayAttendantInquire" />
+56-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:49:9-89
+56-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:49:19-86
+57        <activity android:name="com.THLight.USBeacon.Sample.ui.Attendant" />
+57-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:50:9-77
+57-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:50:19-74
+58        <activity android:name="com.THLight.USBeacon.Sample.ui.Attendant_inquire" />
+58-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:51:9-85
+58-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:51:19-82
+59        <activity android:name="com.THLight.USBeacon.Sample.ui.classProduce" />
+59-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:52:9-80
+59-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:52:19-77
+60        <activity android:name="com.THLight.USBeacon.Sample.ui.Attendant_teacher" />
+60-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:53:9-85
+60-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:53:19-82
+61        <activity android:name="com.THLight.USBeacon.Sample.ui.AllStudent_Attendant" />
+61-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:54:9-88
+61-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:54:19-85
+62        <activity android:name="com.THLight.USBeacon.Sample.ui.rollCall" />
+62-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:55:9-76
+62-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:55:19-73
+63
+64        <receiver android:name="com.THLight.USBeacon.Sample.ui.NotificationReceiver" />
+64-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:56:9-61
+64-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:56:19-58
+65
+66        <service android:name="com.THLight.USBeacon.Sample.service.ScannerService" />
+66-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:57:9-59
+66-->D:\USEB\USBeaconSample\app\src\main\AndroidManifest.xml:57:18-56
+67    </application>
+68
+69</manifest>

@@ -130,29 +130,24 @@ public class classProduce extends Activity {
 
     }
 
-    private RadioGroup.OnCheckedChangeListener radioGroupRoomOnCheckedChange =
+    private final RadioGroup.OnCheckedChangeListener radioGroupRoomOnCheckedChange =
             new RadioGroup.OnCheckedChangeListener()
             {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId)
                 {
-                    switch (checkedId)
+                    if (checkedId == R.id.radioButton4)
                     {
-                        case R.id.radioButton4: //case RadioButtonClassroom1.getId():
-                            NameRoomDayTime[1] = "308";
-                            break;
-
-                        case R.id.radioButton5: //case RadioButtonClassroom2.getId():
+                        NameRoomDayTime[1] = "308";
+                    } else if (checkedId == R.id.radioButton5)
+                    { //case RadioButtonClassroom2.getId():
                             NameRoomDayTime[1] = "309";
-                            break;
-
-                        case R.id.radioButton6: //case RadioButtonClassroom3.getId():
+                    } else if (checkedId == R.id.radioButton6)
+                    { //case RadioButtonClassroom3.getId():
                             NameRoomDayTime[1] = "310";
-                            break;
-
-                        case R.id.radioButton7: //case RadioButtonClassroom4.getId():
+                    } else if (checkedId == R.id.radioButton7)
+                    { //case RadioButtonClassroom4.getId():
                             NameRoomDayTime[1] = "311";
-                            break;
                     }
                 }
             };
@@ -163,27 +158,21 @@ public class classProduce extends Activity {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId)
                 {
-                    switch (checkedId)
-                    {
-                        case R.id.radioButton8: //case RadioButtonClassroom1.getId():
+                    if (checkedId == R.id.radioButton8)
+                    {//case RadioButtonClassroom1.getId():
                             NameRoomDayTime[2] = "星期一";
-                            break;
-
-                        case R.id.radioButton9: //case RadioButtonClassroom2.getId():
+                    } else if (checkedId == R.id.radioButton9)
+                    {//case RadioButtonClassroom2.getId():
                             NameRoomDayTime[2] = "星期二";
-                            break;
-
-                        case R.id.radioButton10: //case RadioButtonClassroom3.getId():
-                            NameRoomDayTime[2] = "星期三";
-                            break;
-
-                        case R.id.radioButton11: //case RadioButtonClassroom4.getId():
-                            NameRoomDayTime[2] = "星期四";
-                            break;
-
-                        case R.id.radioButton12: //case RadioButtonClassroom4.getId():
+                    } else if (checkedId == R.id.radioButton10)
+                    { //case RadioButtonClassroom3.getId():
+                        NameRoomDayTime[2] = "星期三";
+                    } else if (checkedId == R.id.radioButton11)
+                    { //case RadioButtonClassroom4.getId():
+                        NameRoomDayTime[2] = "星期四";
+                    } else if (checkedId == R.id.radioButton12)
+                    { //case RadioButtonClassroom4.getId():
                             NameRoomDayTime[2] = "星期五";
-                            break;
                     }
                 }
             };
@@ -194,23 +183,18 @@ public class classProduce extends Activity {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId)
                 {
-                    switch (checkedId)
-                    {
-                        case R.id.radioButton13: //case RadioButtonClassroom1.getId():
+                    if (checkedId == R.id.radioButton13)
+                    { //case RadioButtonClassroom1.getId():
                             NameRoomDayTime[3] = "09:10~12:00";
-                            break;
-
-                        case R.id.radioButton14: //case RadioButtonClassroom2.getId():
-                            NameRoomDayTime[3] = "10:10~12:00";
-                            break;
-
-                        case R.id.radioButton15: //case RadioButtonClassroom3.getId():
-                            NameRoomDayTime[3] = "13:30~16:20";
-                            break;
-
-                        case R.id.radioButton16: //case RadioButtonClassroom4.getId():
-                            NameRoomDayTime[3] = "15:30~17:20";
-                            break;
+                    } else if (checkedId == R.id.radioButton14)
+                    { //case RadioButtonClassroom2.getId():
+                        NameRoomDayTime[3] = "10:10~12:00";
+                    } else if (checkedId == R.id.radioButton15)
+                    { //case RadioButtonClassroom3.getId():
+                        NameRoomDayTime[3] = "13:30~16:20";
+                    } else if (checkedId == R.id.radioButton16)
+                    { //case RadioButtonClassroom4.getId():
+                        NameRoomDayTime[3] = "15:30~17:20";
                     }
                 }
             };
