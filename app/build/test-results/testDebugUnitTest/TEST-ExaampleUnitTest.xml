@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ExaampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-27T07:08:53.819Z" hostname="LAPTOP-CQUQ8544" time="0.004">
+<testsuite name="ExaampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-10-28T01:49:12.715Z" hostname="LAPTOP-CQUQ8544" time="0.003">
   <properties/>
-  <testcase name="testCase" classname="ExaampleUnitTest" time="0.004"/>
+  <testcase name="testCase" classname="ExaampleUnitTest" time="0.003"/>
   <system-out><![CDATA[testBeforeClass
 testBefore
 --------
