@@ -1,6 +1,3 @@
-
-import android.util.Log;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -10,12 +7,12 @@ import org.junit.Test;
 
 public class ExaampleUnitTest {
     @BeforeClass
-    public static void testBeforeClass() throws Exception {
+    public static void testBeforeClass() {
         System.out.println("testBeforeClass");
     }
 
     @Before
-    public void testBefore() throws Exception {
+    public void testBefore() {
         System.out.println("testBefore");
     }
 
@@ -27,12 +24,12 @@ public class ExaampleUnitTest {
     }
 
     @After
-    public void testAfter() throws Exception {
+    public void testAfter() {
         System.out.println("testAfter");
     }
 
     @AfterClass
-    public static void testAfterClass() throws Exception {
+    public static void testAfterClass() {
         System.out.println("testAfterClass");
     }
 }

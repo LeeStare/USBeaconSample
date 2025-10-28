@@ -117,10 +117,10 @@
         <distance><![CDATA[0]]></distance>
         <describe><![CDATA[1]]></describe>
         <tel><![CDATA[1]]></tel>
-        <url></url>
-        <img></img>
+        <url />
+        <img />
         <note><![CDATA[1]]></note>
-        <youtube></youtube>
+        <youtube />
         <displayorder><![CDATA[4]]></displayorder>
         <operation><![CDATA[DELETE]]></operation>
     </device>
@@ -131,10 +131,10 @@
         <distance><![CDATA[1]]></distance>
         <describe><![CDATA[1]]></describe>
         <tel><![CDATA[1]]></tel>
-        <url></url>
-        <img></img>
+        <url />
+        <img />
         <note><![CDATA[1]]></note>
-        <youtube></youtube>
+        <youtube />
         <displayorder><![CDATA[5]]></displayorder>
         <operation><![CDATA[DELETE]]></operation>
     </device>
@@ -145,10 +145,10 @@
         <distance><![CDATA[2]]></distance>
         <describe><![CDATA[1]]></describe>
         <tel><![CDATA[1]]></tel>
-        <url></url>
-        <img></img>
+        <url />
+        <img />
         <note><![CDATA[1]]></note>
-        <youtube></youtube>
+        <youtube />
         <displayorder><![CDATA[6]]></displayorder>
         <operation><![CDATA[DELETE]]></operation>
     </device>
@@ -159,10 +159,10 @@
         <distance><![CDATA[3]]></distance>
         <describe><![CDATA[1]]></describe>
         <tel><![CDATA[1]]></tel>
-        <url></url>
-        <img></img>
+        <url />
+        <img />
         <note><![CDATA[1]]></note>
-        <youtube></youtube>
+        <youtube />
         <displayorder><![CDATA[7]]></displayorder>
         <operation><![CDATA[DELETE]]></operation>
     </device>
@@ -2466,12 +2466,12 @@
         <version><![CDATA[100.123]]></version>
         <name><![CDATA[Beacon_23]]></name>
         <distance><![CDATA[1]]></distance>
-        <describe></describe>
-        <tel></tel>
-        <url></url>
-        <img></img>
-        <note></note>
-        <youtube></youtube>
+        <describe />
+        <tel />
+        <url />
+        <img />
+        <note />
+        <youtube />
         <displayorder><![CDATA[93]]></displayorder>
         <operation><![CDATA[ADD]]></operation>
     </device>
@@ -2480,12 +2480,12 @@
         <version><![CDATA[100.123]]></version>
         <name><![CDATA[Beacon_23]]></name>
         <distance><![CDATA[2]]></distance>
-        <describe></describe>
-        <tel></tel>
-        <url></url>
-        <img></img>
-        <note></note>
-        <youtube></youtube>
+        <describe />
+        <tel />
+        <url />
+        <img />
+        <note />
+        <youtube />
         <displayorder><![CDATA[94]]></displayorder>
         <operation><![CDATA[ADD]]></operation>
     </device>
@@ -2494,12 +2494,12 @@
         <version><![CDATA[100.123]]></version>
         <name><![CDATA[Beacon_23]]></name>
         <distance><![CDATA[3]]></distance>
-        <describe></describe>
-        <tel></tel>
-        <url></url>
-        <img></img>
-        <note></note>
-        <youtube></youtube>
+        <describe />
+        <tel />
+        <url />
+        <img />
+        <note />
+        <youtube />
         <displayorder><![CDATA[95]]></displayorder>
         <operation><![CDATA[ADD]]></operation>
     </device>
