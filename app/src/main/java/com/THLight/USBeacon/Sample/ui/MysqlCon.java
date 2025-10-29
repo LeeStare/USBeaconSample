@@ -1,8 +1,6 @@
 package com.THLight.USBeacon.Sample.ui;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,17 +9,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
 public class MysqlCon {
     public MysqlCon() {
     }
 
     // 資料庫定義
-    String mysql_ip = "db4free.net";
+    String mysql_ip = "sql12.freesqldatabase.com";
     int mysql_port = 3306; // Port 預設為 3306
-    String db_name = "siriusproject";
-    String url = "jdbc:mysql://"+mysql_ip+":"+mysql_port+"/"+db_name;
-    String db_user = "sirius410777010";
-    String db_password = "ASDzxc410";
+    String db_name = "sql12804805";
+    String url = "jdbc:mysql://"+mysql_ip+":"+mysql_port+"/"+db_name+"?useSSL=false&connectTimeout=10000&autoReconnect=true";
+    String db_user = "sql12804805";
+    String db_password = "8WkBTMX1nD";
 
     /*String mysql_ip = "140.127.74.129";  //140.127.74.129
     int mysql_port = 3306; // Port 預設為 3306  //3306
@@ -31,22 +32,21 @@ public class MysqlCon {
     String db_password = "12345678"; //12345678*/
 
     public void run() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Log.v("DB","加載驅動成功");
-        }catch( ClassNotFoundException e) {
-            Log.e("DB","加載驅動失敗");
-            return;
-        }
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://usbeaconfastapi.onrender.com")
+                .build();
+        //Class.forName("com.mysql.jdbc.Driver");
+        Log.v("DB","加載驅動成功");
 
         // 連接資料庫
-        try {
+        /*try {
             Connection con = DriverManager.getConnection(url,db_user,db_password);
             Log.v("DB","遠端連接成功");
         }catch(SQLException e) {
             Log.e("DB","遠端連接失敗");
             Log.e("DB", e.toString());
-        }
+        }*/
     }
 
     //--------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ public class MysqlCon {
             }
             st.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             Log.e("DB", "寫入資料失敗");
             Log.e("DB", e.toString());
         }

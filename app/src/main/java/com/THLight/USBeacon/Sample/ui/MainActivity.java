@@ -2,9 +2,6 @@
  * ==============================================================
  */
 package com.THLight.USBeacon.Sample.ui;
-/**
- * ==============================================================
- */
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -30,14 +27,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PowerManager;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
+
+import androidx.core.app.ActivityCompat;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -88,7 +85,7 @@ public class MainActivity extends Activity implements USBeaconConnection.OnRespo
      * server http api url.
      */
     private static final String HTTP_API = "http://www.usbeacon.com.tw/api/func";
-    private static String STORE_PATH = Environment.getExternalStorageDirectory().toString() + "/USBeaconSample/";
+    private static final String STORE_PATH = Environment.getExternalStorageDirectory().toString() + "/USBeaconSample/";
     private static final int REQ_ENABLE_BT = 2000;
     private static final int MSG_SERVER_RESPONSE = 3000;
     private static final int TIME_BEACON_TIMEOUT = 30000;
@@ -251,6 +248,16 @@ public class MainActivity extends Activity implements USBeaconConnection.OnRespo
         //Check the BT is on or off on the phone.
         if (!bluetoothAdapter.isEnabled()) {
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             startActivityForResult(intent, REQ_ENABLE_BT);   // A request for open Bluetooth
         } else {
             Intent service = new Intent(this, ScannerService.class);
