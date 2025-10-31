@@ -1,0 +1,5 @@
+#忽略.gradle底下所有檔案
+.gradle/
+
+#忽略建置檔
+app/build

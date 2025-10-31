@@ -119,7 +119,7 @@ public class MysqlCon {
                 return result;
             }
             st.close();*/
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Log.e("DB", "寫入資料失敗");
             Log.e("DB", e.toString());
