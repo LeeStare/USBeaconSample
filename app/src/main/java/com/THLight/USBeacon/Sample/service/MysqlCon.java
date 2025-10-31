@@ -1,7 +1,19 @@
-package com.THLight.USBeacon.Sample.ui;
+package com.THLight.USBeacon.Sample.service;
 
+
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.checkIfExistAccountInput;
+import com.THLight.USBeacon.Sample.ui.login;
+import com.THLight.USBeacon.Sample.ui.login_successfully;
+import com.THLight.USBeacon.Sample.ui.login_teacher;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,8 +21,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+// OkHttp宣告
+import okhttp3.*;
+
+import org.json.JSONObject;
 
 public class MysqlCon {
     public MysqlCon() {
@@ -33,9 +47,6 @@ public class MysqlCon {
 
     public void run() {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://usbeaconfastapi.onrender.com")
-                .build();
         //Class.forName("com.mysql.jdbc.Driver");
         Log.v("DB","加載驅動成功");
 
@@ -51,10 +62,51 @@ public class MysqlCon {
 
     //--------------------------------------------------------------------------------------
     //沐光的code
-    public boolean checkIfExistAccount(String id, String password) {    //回傳帳密是否存在
+    public boolean checkIfExistAccount(String id, String password, ApiHelper.BooleanCallback callback) {    //回傳帳密是否存在
         boolean result = false;
         try {
-            Connection con = DriverManager.getConnection(url, db_user, db_password);
+            String url = "https://usbeaconfastapi.onrender.com/check_account";
+
+            OkHttpClient client = new OkHttpClient();
+            // 建立 JSON 物件
+            checkIfExistAccountInput input = new checkIfExistAccountInput(url, id, password);
+
+            // 建立請求
+            Request request = input.request;
+            // 設置回傳
+            Call call = client.newCall(request);
+
+            // 非同步執行
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, IOException e) {
+                    Log.e("API", "連線失敗: " + e.getMessage());
+                    callback.onResult(false);  // 回傳 false 表示失敗
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        String jsonResponse = response.body().string();
+                        try {
+                            JSONObject res = new JSONObject(jsonResponse);
+                            boolean exist = res.optBoolean("exist", false);
+                            callback.onResult(exist);
+                            Log.v("API", "帳號是否存在: " + exist);
+                        } catch (Exception e) {
+                            Log.e("API", "解析錯誤: " + e.getMessage());
+                            callback.onResult(false);
+                        }
+                    } else {
+                        Log.e("API", "伺服器回應失敗 code: " + response.code());
+                        callback.onResult(false);
+                    }
+                }
+            });
+
+            return result;
+
+            /*Connection con = DriverManager.getConnection(url, db_user, db_password);
             String sql = "SELECT account,password FROM `userdata` WHERE account = ";
             sql += id;
             sql += " AND password = '";
@@ -66,7 +118,7 @@ public class MysqlCon {
                 result = true;
                 return result;
             }
-            st.close();
+            st.close();*/
         } catch (SQLException e) {
             e.printStackTrace();
             Log.e("DB", "寫入資料失敗");

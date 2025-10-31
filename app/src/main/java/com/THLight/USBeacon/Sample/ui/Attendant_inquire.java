@@ -6,14 +6,13 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class Attendant_inquire extends Activity {
     String inquireClass;

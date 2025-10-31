@@ -49,6 +49,7 @@ import com.THLight.USBeacon.App.Lib.iBeaconData;
 import com.THLight.USBeacon.Sample.R;
 import com.THLight.USBeacon.Sample.ScanIBeaconData;
 import com.THLight.USBeacon.Sample.entity.ScanDeviceItemEntity;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 import com.THLight.USBeacon.Sample.thLightApplication;
 import com.THLight.USBeacon.Sample.THLConfig;
 import com.THLight.USBeacon.Sample.service.ScannerService;

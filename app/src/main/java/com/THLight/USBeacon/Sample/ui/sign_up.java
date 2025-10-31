@@ -3,7 +3,6 @@ package com.THLight.USBeacon.Sample.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class sign_up extends Activity {
     @Override

@@ -4,11 +4,9 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.os.Build;
 
-import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

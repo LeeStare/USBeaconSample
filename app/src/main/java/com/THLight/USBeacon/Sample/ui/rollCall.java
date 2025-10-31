@@ -2,7 +2,6 @@ package com.THLight.USBeacon.Sample.ui;
 
 import android.app.Activity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class rollCall extends Activity {
     ArrayList<String> classData;

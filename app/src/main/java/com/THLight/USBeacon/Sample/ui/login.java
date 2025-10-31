@@ -1,7 +1,5 @@
 package com.THLight.USBeacon.Sample.ui;
 
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,9 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import static android.content.Context.NOTIFICATION_SERVICE;
 
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class login extends Activity {
     public static final int FUNC_LOGIN = 1;
@@ -32,47 +31,54 @@ public class login extends Activity {
         btn_to_login_successfully.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread(new Runnable() {
+                MysqlCon con = new MysqlCon();
+                //con.run();
+                String id = student_id.getText().toString().trim();
+                String psw = password.getText().toString().trim();
+                String user = con.getUserName(id);
+                //System.out.println(con.checkIfExistAccount(student_id.getText().toString().trim()
+                //        ,password.getText().toString().trim()));
+
+                // 呼叫 API 並用 Callback 接收結果
+                con.checkIfExistAccount(id, psw, new ApiHelper.BooleanCallback() {
                     @Override
-                    public void run(){
-                        MysqlCon con = new MysqlCon();
-                        con.run();
-                        String id = student_id.getText().toString().trim();
-                        String psw = password.getText().toString().trim();
-                        String user = con.getUserName(id);
-                        //System.out.println(con.checkIfExistAccount(student_id.getText().toString().trim()
-                        //        ,password.getText().toString().trim()));
-                        if(con.checkIfExistAccount(id,psw)) {
-                            Intent intent = new Intent();
-                            if(user.equals("郭教授")) {
-                                intent.setClass(login.this, login_teacher.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("user", user);
-                                intent.putExtras(bundle);
-                            }
-                            else {
-                                intent.setClass(login.this, login_successfully.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("user", user);
-                                intent.putExtras(bundle);
-                            }
-                            startActivity(intent);
-                        }
-                        else {
-                            layout.post(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(getApplicationContext(), "帳號密碼有誤或尚未註冊", Toast.LENGTH_SHORT).show();
+                    public void onResult(boolean exist) {
+                        // 背景執行緒，所以要切回 UI 執行緒
+                        runOnUiThread(() -> {
+                            if (exist) {
+                                Toast.makeText(login.this, "登入成功！", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent();
+                                if (user.equals("郭教授")) {
+                                    intent.setClass(login.this, login_teacher.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("user", user);
+                                    intent.putExtras(bundle);
+
+                                } else {
+                                    Toast.makeText(login.this, "帳號或密碼錯誤", Toast.LENGTH_SHORT).show();
+                                    intent.setClass(login.this, login_successfully.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("user", user);
+                                    intent.putExtras(bundle);
                                 }
-                            });
-                        }
+                                startActivity(intent);
+                            } else {
+                                layout.post(new Runnable() {
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "帳號密碼有誤或尚未註冊", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                        //intent.setClass(login.this, login_successfully.class);
+                        /*Bundle bundle = new Bundle();
+                        bundle.putString("student_id",student_id.getText().toString());
+                        //bundle.putString("password",password.getText().toString());
+                        intent.putExtras(bundle);*/
+                        //startActivity(intent);
                     }
-                }).start();
-                //intent.setClass(login.this, login_successfully.class);
-                /*Bundle bundle = new Bundle();
-                bundle.putString("student_id",student_id.getText().toString());
-                //bundle.putString("password",password.getText().toString());
-                intent.putExtras(bundle);*/
-                //startActivity(intent);
+                });
             }
         });
 

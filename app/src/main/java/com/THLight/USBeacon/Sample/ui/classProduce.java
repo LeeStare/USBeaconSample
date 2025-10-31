@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class classProduce extends Activity {
 
