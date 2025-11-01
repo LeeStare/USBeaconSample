@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
-import com.THLight.USBeacon.Sample.entity.HttpJsonObject.checkIfExistAccountInput;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CheckIfExistAccountInput;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -62,7 +62,7 @@ public class MysqlCon {
 
             OkHttpClient client = new OkHttpClient();
             // 建立 JSON 物件
-            checkIfExistAccountInput input = new checkIfExistAccountInput(url, id, password);
+            CheckIfExistAccountInput input = new CheckIfExistAccountInput(url, id, password);
 
             // 建立請求
             Request request = input.request;

@@ -1,4 +1,4 @@
-package com.THLight.USBeacon.Sample.entity.HttpJsonObject;
+package com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,12 +7,12 @@ import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class checkIfExistAccountInput {
+public class CheckIfExistAccountInput {
 
     public JSONObject json = new JSONObject();
     public RequestBody body;
     public Request request;
-    public checkIfExistAccountInput(String url, String id, String password){
+    public CheckIfExistAccountInput(String url, String id, String password){
 
         try {
             json.put("id", id);
@@ -30,9 +30,5 @@ public class checkIfExistAccountInput {
                 .url(url)
                 .post(body)
                 .build();
-    }
-
-    public boolean changeResult(boolean exist){
-        return exist;
     }
 }

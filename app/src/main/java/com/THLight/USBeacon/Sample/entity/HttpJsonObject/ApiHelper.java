@@ -8,4 +8,8 @@ public class ApiHelper {
     public interface IntCallback {
         void onResult(int result);
     }
+
+    public interface StringCallback {
+        void onResult(String result);
+    }
 }

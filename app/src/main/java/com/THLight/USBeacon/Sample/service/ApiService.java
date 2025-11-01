@@ -1,8 +1,12 @@
 package com.THLight.USBeacon.Sample.service;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CheckIfExistAccountInput;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetInput;
 
 import org.json.JSONObject;
 
@@ -15,25 +19,9 @@ public class ApiService {
     private final OkHttpClient client = new OkHttpClient();
 
     public void checkIfExistAccount(String id, String password, ApiHelper.BooleanCallback callback) {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("id", id);
-            json.put("password", password);
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
+        CheckIfExistAccountInput input = new CheckIfExistAccountInput(BASE_URL, id, password);
 
-        RequestBody body = RequestBody.create(
-                json.toString(),
-                MediaType.parse("application/json; charset=utf-8")
-        );
-
-        Request request = new Request.Builder()
-                .url(BASE_URL + "/check_account")
-                .post(body)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
+        client.newCall(input.request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 callback.onResult(false);
@@ -46,8 +34,33 @@ public class ApiService {
                     boolean exist = res.optBoolean("exist", false);
                     callback.onResult(exist);
                 } catch (Exception e) {
-                    //e.printStackTrace();
                     callback.onResult(false);
+                }
+            }
+        });
+    }
+
+    public void getUserName(String id, ApiHelper.StringCallback callback) {  //回傳使用者名稱
+        GetInput input = new GetInput(BASE_URL, id);
+
+        client.newCall(input.request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                Log.e("API", "連線失敗: " + e.getMessage());
+                callback.onResult("");
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                try {
+                    String responsBody = response.body().string();
+                    JSONObject res = new JSONObject(responsBody);
+                    String userName = res.optString("user_name", "");
+                    callback.onResult(userName);
+                } catch (Exception e) {
+                    Log.e("API", "解析錯誤: " + e.getMessage());
+                    callback.onResult("");
                 }
             }
         });

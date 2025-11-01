@@ -19,9 +19,9 @@ public class sign_up extends Activity {
         setTitle("註冊頁面");
         setContentView(R.layout.activity_sign_up);
 
-        Button btn_sign_up = (Button) findViewById(R.id.btn_sign_up);
-        Button btn_to_login = (Button) findViewById(R.id.btn_to_login);
-        final LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+        Button btn_sign_up = findViewById(R.id.btn_sign_up);
+        Button btn_to_login = findViewById(R.id.btn_to_login);
+        final LinearLayout layout = findViewById(R.id.layout);
 
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,10 +30,10 @@ public class sign_up extends Activity {
                     @Override
                     public void run() {
                         // 取得 EditText 資料
-                        final EditText account_text = (EditText) findViewById(R.id.student_id);
-                        final EditText password_text = (EditText) findViewById(R.id.password);
-                        final EditText user_name_text = (EditText) findViewById(R.id.name);
-                        final EditText phone_number_text = (EditText) findViewById(R.id.phone);
+                        final EditText account_text = findViewById(R.id.student_id);
+                        final EditText password_text = findViewById(R.id.password);
+                        final EditText user_name_text = findViewById(R.id.name);
+                        final EditText phone_number_text = findViewById(R.id.phone);
                         String account = account_text.getText().toString();
                         String password = password_text.getText().toString();
                         String user_name = user_name_text.getText().toString();
@@ -41,7 +41,7 @@ public class sign_up extends Activity {
                         MysqlCon con = new MysqlCon();
                         con.run();
 
-                        if(account.equals("") || password.equals("") || user_name.equals("") || phone_number.equals("")) {
+                        if(account.isEmpty() || password.isEmpty() || user_name.isEmpty() || phone_number.isEmpty()) {
                             layout.post(new Runnable() {
                                 public void run() {
                                     Toast.makeText(getApplicationContext(), "輸入資料不可為空", Toast.LENGTH_SHORT).show();

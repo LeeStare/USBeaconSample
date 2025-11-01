@@ -10,13 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.THLight.USBeacon.Sample.R;
-import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
 import com.THLight.USBeacon.Sample.service.ApiService;
-import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class login extends Activity {
-    public static final int FUNC_LOGIN = 1;
+
     ApiService apiService = new ApiService();
+    private String currentUserName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +32,17 @@ public class login extends Activity {
         btn_to_login_successfully.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MysqlCon con = new MysqlCon();
                 String id = student_id.getText().toString().trim();
                 String psw = password.getText().toString().trim();
-                String user = con.getUserName(id);
+                apiService.getUserName("teacher01", userName -> runOnUiThread(() -> {
+                    // ✅ 這裡是 callback，請求已完成
+                    currentUserName = userName;
+
+                    if (currentUserName.isEmpty()) {
+                        Toast.makeText(login.this, "查無此帳號", Toast.LENGTH_SHORT).show();
+                    }
+                }));
+                String user = currentUserName;
 
                 // 呼叫方法
                 apiService.checkIfExistAccount(id, psw, exist -> runOnUiThread(() -> {
