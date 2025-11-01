@@ -1,17 +1,12 @@
 package com.THLight.USBeacon.Sample.service;
 
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.checkIfExistAccountInput;
-import com.THLight.USBeacon.Sample.ui.login;
-import com.THLight.USBeacon.Sample.ui.login_successfully;
-import com.THLight.USBeacon.Sample.ui.login_teacher;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -46,8 +41,6 @@ public class MysqlCon {
     String db_password = "12345678"; //12345678*/
 
     public void run() {
-        OkHttpClient client = new OkHttpClient();
-        //Class.forName("com.mysql.jdbc.Driver");
         Log.v("DB","加載驅動成功");
 
         // 連接資料庫
@@ -106,19 +99,6 @@ public class MysqlCon {
 
             return result;
 
-            /*Connection con = DriverManager.getConnection(url, db_user, db_password);
-            String sql = "SELECT account,password FROM `userdata` WHERE account = ";
-            sql += id;
-            sql += " AND password = '";
-            sql += password;
-            sql += "'";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if(rs.next()) {
-                result = true;
-                return result;
-            }
-            st.close();*/
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("DB", "寫入資料失敗");
