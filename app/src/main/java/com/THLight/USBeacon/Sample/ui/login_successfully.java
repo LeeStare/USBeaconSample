@@ -28,22 +28,19 @@ public class login_successfully extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_successfully);
-        layout = (LinearLayout) findViewById(R.id.layout);
-        TextView user_name = (TextView) findViewById(R.id.user_name);
-        get_user_name = (String)getIntent().getExtras().getString("user");
+        layout = findViewById(R.id.layout);
+        TextView user_name = findViewById(R.id.user_name);
+        get_user_name = getIntent().getExtras().getString("user");
         user_name.setText(get_user_name);
 
-        Button btn_to_game = (Button) findViewById(R.id.btn_to_game);
+        Button btn_to_game = findViewById(R.id.btn_to_game);
         btn_to_game.setOnClickListener(onClickListener);
-        Button btn_to_roll_call = (Button) findViewById(R.id.btn_to_roll_call);
+        Button btn_to_roll_call = findViewById(R.id.btn_to_roll_call);
         btn_to_roll_call.setOnClickListener(onClickListener);
-        Button btn_to_search_today = (Button) findViewById(R.id.btn_to_search_today);
+        Button btn_to_search_today = findViewById(R.id.btn_to_search_today);
         btn_to_search_today.setOnClickListener(onClickListener);
-        Button btn_to_search_user = (Button) findViewById(R.id.btn_to_search_user);
+        Button btn_to_search_user = findViewById(R.id.btn_to_search_user);
         btn_to_search_user.setOnClickListener(onClickListener);
-        /*Bundle bundle = new Bundle();
-        bundle.putString("user",get_user_name);
-        intent.putExtras(bundle);*/
     }
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -68,25 +65,14 @@ public class login_successfully extends Activity {
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
-            /*new Thread(new Runnable() {
-                @Override
-                public void run(){
-                    MysqlCon con = new MysqlCon();
-                    con.run();
-                    //con.setFlag("computer",get_user_name);
-                    con.roll_call(get_user_name);
-                }
-            }).start();*/
     }
 
     public void bRollCall(){
-        //if(MainActivity.isConnect == true) {
         new Thread(new Runnable() {
             @Override
             public void run(){
                 MysqlCon con = new MysqlCon();
                 con.run();
-                //con.setFlag("computer",get_user_name);
                 /**建立要嵌入在通知裡的介面*/
                 RemoteViews view = new RemoteViews(getPackageName(),R.layout.custom_notification);
 
@@ -100,7 +86,7 @@ public class login_successfully extends Activity {
                 /**設置通知內"Hi"這個按鈕的點擊事件(以Intent的Action傳送標籤，標籤為Hi)*/
                 intent.setAction("roll_call");
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(login_successfully.this
-                        ,0,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+                        ,0,intent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
                 /**設置通知內"Close"這個按鈕的點擊事件(以Intent的Action傳送標籤，標籤為Close)*/
                     /*intent.setAction("Close");
@@ -143,19 +129,6 @@ public class login_successfully extends Activity {
                 });
             }
         }).start();
-            /*NotificationCompat.Builder builder
-                    = new NotificationCompat.Builder(login_successfully.this,CHANNEL_ID)
-                    .setSmallIcon(R.drawable.ic_baseline_roll_call_finished_24) //設置小icon
-                    .setContentTitle("您已完成點名囉！")                         //設置標題
-                    //.setContentText("跟你打個招呼啊～")                        //設置內容
-                    .setAutoCancel(true)                                        //設置是否點到後自動消失
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)              //設置通知等級
-                    .setCategory(NotificationCompat.CATEGORY_MESSAGE);          //設置通知類型
-
-            //發出通知
-            NotificationManagerCompat notificationManagerCompat
-                    = NotificationManagerCompat.from(login_successfully.this);
-            notificationManagerCompat.notify(1,builder.build());*/
     }
 
     public void bToSerachD() {
@@ -173,13 +146,5 @@ public class login_successfully extends Activity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
-    /*
-    // Disable back button
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }*/
-
 }
 
