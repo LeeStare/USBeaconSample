@@ -27,8 +27,8 @@ public class Attendant extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.attendant);
 
-        final String get_user_name = (String)getIntent().getExtras().getString("user");
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.table);
+        final String get_user_name = getIntent().getExtras().getString("user");
+        TableLayout tableLayout = findViewById(R.id.table);
 
         new Thread(new Runnable(){
             @Override
