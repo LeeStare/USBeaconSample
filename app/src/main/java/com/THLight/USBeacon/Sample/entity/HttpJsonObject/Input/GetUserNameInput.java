@@ -2,13 +2,13 @@ package com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input;
 
 import okhttp3.Request;
 
-public class GetInput {
+public class GetUserNameInput {
 
     public Request request;
 
-    public GetInput(String url, String getInfo){
+    public GetUserNameInput(String url, String getInfo){
         this.request = new Request.Builder()
-                .url(url + getInfo)
+                .url(url+ "/get_user_name?id=" + getInfo)
                 .get()
                 .build();
     }

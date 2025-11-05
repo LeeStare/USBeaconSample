@@ -15,20 +15,23 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.service.ApiService;
 import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class rollCall extends Activity {
+
+    ApiService apiService = new ApiService();
     ArrayList<String> classData;
     String[] splittedClassData;
     String inquireClassName;
+    private String currentClassName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rollcall);
 
-        final String get_user_name = (String)getIntent().getExtras().getString("user");
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.table);
+        TableLayout tableLayout = findViewById(R.id.table);
 
         new Thread(new Runnable(){
             @Override
@@ -127,15 +130,15 @@ public class rollCall extends Activity {
                         @Override
                         public void onClick(View v) {
                             inquireClassName =(String)textView1.getText();
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run(){
-                                    MysqlCon con = new MysqlCon();
-                                    con.run();
-                                    con.setFlag(inquireClassName, get_user_name);
-                                    System.out.println("已開放點名課程:"+ con.getClassName());
+                            apiService.getClassName(className -> runOnUiThread(() -> {
+                                // 請求已完成
+                                currentClassName = className;
+
+                                if (currentClassName.isEmpty()) {
+                                    Toast.makeText(rollCall.this, "課程尚未開放", Toast.LENGTH_SHORT).show();
                                 }
-                            }).start();
+                            }));
+                            System.out.println("已開放點名課程:"+ con.getClassName());
                             Toast.makeText(getApplicationContext(), "您已開放點名!", Toast.LENGTH_SHORT).show();
                         }
                     });

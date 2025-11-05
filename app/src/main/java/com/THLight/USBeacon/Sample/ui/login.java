@@ -34,8 +34,8 @@ public class login extends Activity {
             public void onClick(View v) {
                 String id = student_id.getText().toString().trim();
                 String psw = password.getText().toString().trim();
-                apiService.getUserName("teacher01", userName -> runOnUiThread(() -> {
-                    // ✅ 這裡是 callback，請求已完成
+                apiService.getUserName(id, userName -> runOnUiThread(() -> {
+                    // 請求已完成
                     currentUserName = userName;
 
                     if (currentUserName.isEmpty()) {

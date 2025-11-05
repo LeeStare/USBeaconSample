@@ -15,12 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.THLight.USBeacon.Sample.R;
-import com.THLight.USBeacon.Sample.service.MysqlCon;
+import com.THLight.USBeacon.Sample.service.ApiService;
 
 public class login_successfully extends Activity {
-
+    ApiService apiService = new ApiService();
     private String CHANNEL_ID = "Coder";
     private String get_user_name = "";
+    private String currentUserName;
+    private String currentClassName;
     LinearLayout layout;
 
 
@@ -71,8 +73,6 @@ public class login_successfully extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run(){
-                MysqlCon con = new MysqlCon();
-                con.run();
                 /**建立要嵌入在通知裡的介面*/
                 RemoteViews view = new RemoteViews(getPackageName(),R.layout.custom_notification);
 
@@ -100,9 +100,18 @@ public class login_successfully extends Activity {
                 view.setImageViewResource(
                         R.id.imageView_Icon,R.drawable.ic_baseline_roll_call_finished_24);
 
-                view.setTextViewText(R.id.course,"課程:" + con.getClassName());
-                view.setTextViewText(R.id.room,"教室:" + con.getClassroom());
-                view.setTextViewText(R.id.sid,"學號:" + con.getAccount(get_user_name));
+                apiService.getClassName(className -> runOnUiThread(() -> {
+                    // 請求已完成
+                    currentClassName = className;
+
+                    if (currentClassName.isEmpty()) {
+                        Toast.makeText(login_successfully.this, "課程尚未開放", Toast.LENGTH_SHORT).show();
+                    }
+                }));
+
+                view.setTextViewText(R.id.course,"課程:" + currentClassName);
+                view.setTextViewText(R.id.room,"教室:" + currentClassName);
+                view.setTextViewText(R.id.sid,"學號:" + get_user_name);
 
                 /*設置"roll_call"按鈕點擊事件(綁pendingIntent)*/
                 view.setOnClickPendingIntent(R.id.button_roll_call,pendingIntent);
