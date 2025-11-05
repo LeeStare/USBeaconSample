@@ -3,3 +3,4 @@
 
 #忽略建置檔
 app/build
+.idea/
