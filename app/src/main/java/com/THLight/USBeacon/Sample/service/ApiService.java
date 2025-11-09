@@ -11,14 +11,11 @@ import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CheckAccountPassw
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CreateUserRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetUserNameRequest;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.SetFlagZeroRequest;
 
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import okhttp3.*;
 
@@ -108,12 +105,15 @@ public class ApiService {
                 }
 
                 @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) {
-                    try {
-                        boolean success = response.isSuccessful();
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    try (ResponseBody responseBody = response.body()) {
+                        String responseText = responseBody.string();
+                        JSONObject res = new JSONObject(responseText);
+                        boolean success = res.optBoolean("success", false);
                         new Handler(Looper.getMainLooper()).post(() -> callback.onResult(success));
                     } catch (Exception e) {
                         Log.e("API", "解析錯誤: " + e.getMessage());
+                        new Handler(Looper.getMainLooper()).post(() -> callback.onResult(false));
                     }
                 }
             });
@@ -144,6 +144,31 @@ public class ApiService {
                 } catch (Exception e) {
                     Log.e("API", "解析錯誤: " + e.getMessage());
                     callback.onResult("");
+                }
+            }
+        });
+    }
+
+    public void setFlagZero(String user, ApiHelper.BooleanCallback callback) {
+        SetFlagZeroRequest request = new SetFlagZeroRequest(BASE_URL, user);
+
+        client.newCall(request.request).enqueue(new Callback() {
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                Log.e("API", "連線失敗: " + e.getMessage());
+                new Handler(Looper.getMainLooper()).post(() -> callback.onResult(false));
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                try (ResponseBody responseBody = response.body()) {
+                    String responseText = responseBody.string();
+                    JSONObject res = new JSONObject(responseText);
+                    boolean success = res.optBoolean("success", false);
+                    new Handler(Looper.getMainLooper()).post(() -> callback.onResult(success));
+                } catch (Exception e) {
+                    Log.e("API", "解析錯誤: " + e.getMessage());
+                    new Handler(Looper.getMainLooper()).post(() -> callback.onResult(false));
                 }
             }
         });
