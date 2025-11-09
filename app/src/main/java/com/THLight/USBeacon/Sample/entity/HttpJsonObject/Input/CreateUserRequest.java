@@ -7,16 +7,17 @@ import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class CheckIfExistAccountInput {
-
+public class CreateUserRequest {
     public JSONObject json = new JSONObject();
     public RequestBody body;
     public Request request;
-    public CheckIfExistAccountInput(String url, String id, String password){
+    public CreateUserRequest(String url, String account, String password, String userName, String phoneNumber){
 
         try {
-            json.put("id", id);
+            json.put("account", account);
             json.put("password", password);
+            json.put("user_name", userName);
+            json.put("phone_number", phoneNumber);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -27,7 +28,7 @@ public class CheckIfExistAccountInput {
         );
 
         this.request = new Request.Builder()
-                .url(url)
+                .url(url + "/register_user")
                 .post(body)
                 .build();
     }

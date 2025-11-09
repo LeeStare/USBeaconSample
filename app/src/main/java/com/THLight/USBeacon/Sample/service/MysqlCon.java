@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
-import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CheckIfExistAccountInput;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CheckAccountPasswordRequest;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -55,14 +55,14 @@ public class MysqlCon {
 
     //--------------------------------------------------------------------------------------
     //沐光的code
-    public boolean checkIfExistAccount(String id, String password, ApiHelper.BooleanCallback callback) {    //回傳帳密是否存在
+    public boolean checkIfExistAccount(String account, String password, ApiHelper.BooleanCallback callback) {    //回傳帳密是否存在
         boolean result = false;
         try {
             String url = "https://usbeaconfastapi.onrender.com/check_account";
 
             OkHttpClient client = new OkHttpClient();
             // 建立 JSON 物件
-            CheckIfExistAccountInput input = new CheckIfExistAccountInput(url, id, password);
+            CheckAccountPasswordRequest input = new CheckAccountPasswordRequest(url, account, password);
 
             // 建立請求
             Request request = input.request;

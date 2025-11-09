@@ -32,9 +32,9 @@ public class login extends Activity {
         btn_to_login_successfully.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = student_id.getText().toString().trim();
+                String account = student_id.getText().toString().trim();
                 String psw = password.getText().toString().trim();
-                apiService.getUserName(id, userName -> runOnUiThread(() -> {
+                apiService.getUserName(account, userName -> runOnUiThread(() -> {
                     // 請求已完成
                     currentUserName = userName;
 
@@ -45,7 +45,7 @@ public class login extends Activity {
                 String user = currentUserName;
 
                 // 呼叫方法
-                apiService.checkIfExistAccount(id, psw, exist -> runOnUiThread(() -> {
+                apiService.checkAccountPassword(account, psw, exist -> runOnUiThread(() -> {
                     if (exist) {
                         Toast.makeText(login.this, "登入成功！", Toast.LENGTH_SHORT).show();
 
