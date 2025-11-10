@@ -262,7 +262,13 @@ public class classProduce extends Activity {
                         Toast.makeText(classProduce.this,"簽到表創建失敗:選項遺漏", Toast.LENGTH_LONG).show();
                         Looper.loop();
                     }else{
-                        con.insertClassData(NameRoomDayTime[0], NameRoomDayTime[1], NameRoomDayTime[2], NameRoomDayTime[3], studentTable.size(),0);
+                        apiService.ClassCreate(NameRoomDayTime[0], NameRoomDayTime[1], NameRoomDayTime[2], NameRoomDayTime[3], studentTable.size(),0, success -> runOnUiThread(() -> {
+                            if (success) {
+                                Toast.makeText(classProduce.this, "資料新增成功", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(classProduce.this, "資料新增失敗", Toast.LENGTH_SHORT).show();
+                            }
+                        }));
                         con.createAttendanceTable(NameRoomDayTime[0]);
                         con.insertAttendanceTableData(NameRoomDayTime[0], "410777000", "郭教授", "099999999");
                         for (int i = 0; i < studentTable.size(); i++) {

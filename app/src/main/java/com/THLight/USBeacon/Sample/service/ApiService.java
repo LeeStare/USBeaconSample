@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CheckAccountPasswordRequest;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.ClassCreateRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.CreateUserRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetUserNameRequest;
@@ -175,6 +176,7 @@ public class ApiService {
             }
         });
     }
+
     public void get_classNameList(ApiHelper.ListCallback callback) {
         GetRequest request = new GetRequest(BASE_URL, "/get_all_class_name");
 
@@ -205,6 +207,32 @@ public class ApiService {
                 } catch (Exception e) {
                     Log.e("API", "解析錯誤: " + e.getMessage());
                     callback.onResult(new ArrayList<>());
+                }
+            }
+        });
+    }
+
+    public void ClassCreate(String className, String classroom, String day, String time, int quantity, int flag, ApiHelper.BooleanCallback callback) {
+        ClassCreateRequest request = new ClassCreateRequest(BASE_URL, className, classroom, day, time, quantity, flag);
+
+        // 建立請求();
+        client.newCall(request.request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("API", "連線失敗: " + e.getMessage());
+                callback.onResult(false);
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) {
+                try (ResponseBody responseBody = response.body()) {
+                    String responseText = responseBody.string();
+                    JSONObject res = new JSONObject(responseText);
+                    boolean success = res.optBoolean("success", false);
+                    new Handler(Looper.getMainLooper()).post(() -> callback.onResult(success));
+                } catch (Exception e) {
+                    Log.e("API", "解析錯誤: " + e.getMessage());
+                    new Handler(Looper.getMainLooper()).post(() -> callback.onResult(false));
                 }
             }
         });
