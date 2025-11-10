@@ -13,9 +13,11 @@ import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.GetUserNameRequest;
 import com.THLight.USBeacon.Sample.entity.HttpJsonObject.Input.SetFlagZeroRequest;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.*;
 
@@ -169,6 +171,40 @@ public class ApiService {
                 } catch (Exception e) {
                     Log.e("API", "解析錯誤: " + e.getMessage());
                     new Handler(Looper.getMainLooper()).post(() -> callback.onResult(false));
+                }
+            }
+        });
+    }
+    public void get_classNameList(ApiHelper.ListCallback callback) {
+        GetRequest request = new GetRequest(BASE_URL, "/get_all_class_name");
+
+        client.newCall(request.request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("API", "連線失敗: " + e.getMessage());
+                callback.onResult(new ArrayList<>()); // 回傳空 list
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                ArrayList<String> temp = new ArrayList<>();
+
+                try {
+                    String responseBody = response.body().string();
+                    JSONObject res = new JSONObject(responseBody);
+                    JSONArray classArray = res.optJSONArray("class_names");
+
+                    if (classArray != null) {
+                        for (int i = 0; i < classArray.length(); i++) {
+                            temp.add(classArray.getString(i));
+                        }
+                    }
+
+                    callback.onResult(temp);
+
+                } catch (Exception e) {
+                    Log.e("API", "解析錯誤: " + e.getMessage());
+                    callback.onResult(new ArrayList<>());
                 }
             }
         });

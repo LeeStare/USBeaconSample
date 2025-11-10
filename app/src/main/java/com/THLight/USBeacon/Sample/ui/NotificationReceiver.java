@@ -23,6 +23,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         else {
             switch (intent.getAction()) {
                 case "roll_call":
+
                     new Thread(new Runnable() {
                         @Override
                         public void run(){

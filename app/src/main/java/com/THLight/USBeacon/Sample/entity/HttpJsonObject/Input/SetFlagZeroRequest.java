@@ -26,7 +26,7 @@ public class SetFlagZeroRequest {
         );
 
         this.request = new Request.Builder()
-                .url(url + "/set_flag_zero")
+                .url(url + "/class/setFlagZero")
                 .post(body)
                 .build();
     }

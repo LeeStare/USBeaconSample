@@ -18,11 +18,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import com.THLight.USBeacon.Sample.R;
+import com.THLight.USBeacon.Sample.entity.HttpJsonObject.ApiHelper;
+import com.THLight.USBeacon.Sample.service.ApiService;
 import com.THLight.USBeacon.Sample.service.MysqlCon;
 
 public class classProduce extends Activity {
 
+    ApiService apiService = new ApiService();
+
     ArrayList<String> data = new ArrayList<String>();
+
+    ArrayList<String> temp = new ArrayList<String>();
     int id = 0;
     String[] NameRoomDayTime = new String[4];
     LinkedList studentTable = new LinkedList();
@@ -230,10 +236,16 @@ public class classProduce extends Activity {
                     // 將資料寫入資料庫
                     MysqlCon con = new MysqlCon();
 
-
                     // 檢查className是否存在
-                    ArrayList<String> temp = new ArrayList<String>();
-                    temp = con.getData_className();
+                    apiService.get_classNameList(data -> runOnUiThread(() -> {
+                        // 請求已完成
+                        temp = data;
+
+                        if (temp.isEmpty()) {
+                            Toast.makeText(classProduce.this, "課程取得失敗", Toast.LENGTH_SHORT).show();
+                        }
+                    }));
+
                     boolean existFlag = false;
                     for (int i = 0; i < temp.size(); i++) {
                         if (temp.get(i).equals(className)){

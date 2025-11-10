@@ -15,7 +15,7 @@ import com.THLight.USBeacon.Sample.service.ApiService;
 public class login_teacher extends Activity {
 
     ApiService apiService = new ApiService();
-    private String CHANNEL_ID = "Coder";
+    private final String CHANNEL_ID = "Coder";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
