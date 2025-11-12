@@ -2,6 +2,6 @@
 .gradle/
 
 #忽略建置檔
-app/build
+app/build/
 .idea/
 build/reports/problems/problems-report.html
